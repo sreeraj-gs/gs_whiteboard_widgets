@@ -40,10 +40,15 @@ class LessonAdvancedSearch extends HookWidget {
                 TextButton.icon(
                   onPressed: () => canFilter.value = !canFilter.value,
                   icon: Icon(Icons.filter_list_outlined),
-                  label: Text("Filter"),
+                  label: Text(
+                    "Filter",
+                    style: context.textTheme.titleMedium?.copyWith(
+                      color: Color(0xFF0060FF),
+                    ),
+                  ),
                   iconAlignment: IconAlignment.end,
                   style: TextButton.styleFrom(
-                    foregroundColor:
+                    iconColor:
                         canFilter.value ? Color(0xFF0060FF) : Colors.grey,
                   ),
                 ),
@@ -241,7 +246,6 @@ class _SearchResult extends HookWidget {
                     if (checked == null) return;
                     toggleSelection(lesson.id, checked);
                   },
-                  onDelete: () => toggleSelection(lesson.id, false),
                 );
               },
             ),
@@ -312,15 +316,26 @@ class _SearchResult extends HookWidget {
             ],
           ),
         ),
-        Align(
-          alignment: Alignment.centerRight,
-          child: SizedBox(
-            width: 200,
-            child: GsElevatedButton(
-              onPressed: () {},
-              child: Text("Assign Lesson"),
+        Row(
+          spacing: 14,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            SizedBox(
+              width: 160,
+              child: GsElevatedButton(
+                onPressed: selectedIds.value.isNotEmpty ? () {} : null,
+                backgroundColor: context.colorScheme.error,
+                child: Text("Delete Selected"),
+              ),
             ),
-          ),
+            SizedBox(
+              width: 240,
+              child: GsElevatedButton(
+                onPressed: selectedIds.value.length == 1 ? () {} : null,
+                child: Text("Assign Lesson"),
+              ),
+            ),
+          ],
         ),
       ],
     );

@@ -30,12 +30,15 @@ class LessonTile extends StatelessWidget {
         ),
         overflow: TextOverflow.ellipsis,
       ),
-      trailing: IconButton(
-        icon: Icon(Icons.delete_outline, color: Colors.red[400]),
-        onPressed: onDelete,
-        tooltip: "Delete Lesson",
-        visualDensity: VisualDensity.compact,
-      ),
+      trailing:
+          onDelete != null
+              ? IconButton(
+                icon: Icon(Icons.delete_outline, color: Colors.red[400]),
+                onPressed: onDelete,
+                tooltip: "Delete Lesson",
+                visualDensity: VisualDensity.compact,
+              )
+              : null,
       dense: true,
       visualDensity: VisualDensity.compact,
     );

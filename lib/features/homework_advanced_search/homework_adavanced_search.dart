@@ -170,21 +170,31 @@ class _SearchResult extends HookWidget {
                     if (checked == null) return;
                     toggleSelection(lesson.id, checked);
                   },
-                  onDelete: () => toggleSelection(lesson.id, false),
                 );
               },
             ),
           ),
         ),
-        Align(
-          alignment: Alignment.centerRight,
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 280),
-            child: GsElevatedButton(
-              onPressed: () {},
-              child: Text("View selected Homework"),
+        Row(
+          spacing: 14,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            SizedBox(
+              width: 160,
+              child: GsElevatedButton(
+                onPressed: selectedIds.value.isNotEmpty ? () {} : null,
+                backgroundColor: context.colorScheme.error,
+                child: Text("Delete Selected"),
+              ),
             ),
-          ),
+            SizedBox(
+              width: 240,
+              child: GsElevatedButton(
+                onPressed: selectedIds.value.length == 1 ? () {} : null,
+                child: Text("View selected Homework"),
+              ),
+            ),
+          ],
         ),
       ],
     );

@@ -15,6 +15,7 @@ class Home extends StatelessWidget {
       appBar: AppBar(title: Text("Growing Stars white board")),
       body: Center(
         child: Column(
+          spacing: 20,
           children: [
             ElevatedButton(
               onPressed:
